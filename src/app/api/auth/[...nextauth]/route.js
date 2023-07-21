@@ -24,12 +24,12 @@ const handler = NextAuth({
               credentials.password,
               user.password
             );
+
+            if (isPasswordCorrect) return user;
+            else throw new Error("Wrong credentials");
           } else {
             throw new Error("User not found!");
           }
-
-          if (isPasswordCorrect) return user;
-          else throw new Error("Wrong credentials");
         } catch (err) {
           throw new Error(err);
         }
